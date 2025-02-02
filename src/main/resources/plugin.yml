@@ -1,0 +1,23 @@
+name: OreGenerator
+version: '${project.version}'
+main: org.achymake.oregenerator.OreGenerator
+api-version: '1.21'
+prefix: '${project.name}'
+load: STARTUP
+author: AchyMake
+description: '${project.description}'
+website: '${project.url}'
+commands:
+  oregenerator:
+    description: message
+    permission: oregenerator.command.oregenerator
+    permission-message: You do not have permissions to execute the command
+    aliases:
+      - oregen
+permissions:
+  oregenerator.command.oregenerator:
+    description: message
+    default: op
+  oregenerator.event.join.update:
+    description: message
+    default: op

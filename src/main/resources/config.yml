@@ -1,0 +1,32 @@
+notify-update: true
+worlds:
+  - world
+  - test
+chances:
+  COBBLESTONE:
+    enable: true
+    chance: 1.0
+  COAL_ORE:
+    enable: true
+    chance: 0.75
+  COPPER_ORE:
+    enable: true
+    chance: 0.5
+  IRON_ORE:
+    enable: true
+    chance: 0.5
+  GOLD_ORE:
+    enable: true
+    chance: 0.5
+  REDSTONE_ORE:
+    enable: true
+    chance: 0.25
+  LAPIS_ORE:
+    enable: true
+    chance: 0.25
+  EMERALD_ORE:
+    enable: true
+    chance: 0.125
+  DIAMOND_ORE:
+    enable: true
+    chance: 0.125
