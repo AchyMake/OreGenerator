@@ -16,12 +16,6 @@ public class ScheduleHandler {
     public int runAsynchronously(Runnable runnable) {
         return getScheduler().runTaskAsynchronously(getInstance(), runnable).getTaskId();
     }
-    public boolean isQueued(int taskID) {
-        return getScheduler().isQueued(taskID);
-    }
-    public void cancel(int taskID) {
-        getScheduler().cancelTask(taskID);
-    }
     public void cancelAll() {
         getScheduler().cancelTasks(getInstance());
     }

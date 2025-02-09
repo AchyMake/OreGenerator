@@ -22,23 +22,23 @@ public class OreGeneratorCommand implements CommandExecutor, TabCompleter {
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (sender instanceof Player player) {
             if (args.length == 0) {
-                getMessage().send(player, "&6" + getInstance().name() + ":&f " + getInstance().version());
+                player.sendMessage(getMessage().addColor("&6" + getInstance().name() + "&f: " + getInstance().version()));
                 return true;
             } else if (args.length == 1) {
                 if (args[0].equalsIgnoreCase("reload")) {
                     getInstance().reload();
-                    getMessage().send(player, "&6OreGenerator:&f reloaded");
+                    player.sendMessage(getMessage().addColor("&6" + getInstance().name() + "&f: reloaded"));
                     return true;
                 }
             }
         } else if (sender instanceof ConsoleCommandSender consoleCommandSender) {
             if (args.length == 0) {
-                getMessage().send(consoleCommandSender, getInstance().name() + ": " + getInstance().version());
+                consoleCommandSender.sendMessage(getInstance().name() + ": " + getInstance().version());
                 return true;
             } else if (args.length == 1) {
                 if (args[0].equalsIgnoreCase("reload")) {
                     getInstance().reload();
-                    getMessage().send(consoleCommandSender, "OreGenerator: reloaded");
+                    consoleCommandSender.sendMessage(getInstance().name() + ": reloaded");
                     return true;
                 }
             }

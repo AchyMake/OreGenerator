@@ -9,19 +9,7 @@ public class RandomHandler {
     private double getRandomDouble() {
         return 1.0 - getRandom().nextDouble(1.0);
     }
-    private double getRandomInt() {
-        return 100 - getRandom().nextInt(100);
-    }
     public boolean isTrue(double chance) {
         return chance >= getRandomDouble();
-    }
-    public boolean isTrue(int chance) {
-        return chance >= getRandomInt();
-    }
-    public double nextDouble(double origin, double bound) {
-        return getRandom().nextDouble(origin, bound);
-    }
-    public int nextInt(int origin, int bound) {
-        return getRandom().nextInt(origin, bound);
     }
 }

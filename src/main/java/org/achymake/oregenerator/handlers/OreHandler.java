@@ -20,10 +20,9 @@ public class OreHandler {
     }
     private Set<Map.Entry<String, Double>> getOres() {
         var levels = new HashMap<String, Double>();
-        var config = getConfig();
-        config.getConfigurationSection("chances").getKeys(false).forEach(level -> {
-            if (!config.getBoolean("chances." + level + ".enable"))return;
-            levels.put(level, config.getDouble("chances." + level + ".chance"));
+        getConfig().getConfigurationSection("chances").getKeys(false).forEach(level -> {
+            if (!getConfig().getBoolean("chances." + level + ".enable"))return;
+            levels.put(level, getConfig().getDouble("chances." + level + ".chance"));
         });
         var list = new ArrayList<>(levels.entrySet());
         list.sort(Collections.reverseOrder(Map.Entry.comparingByValue()));
