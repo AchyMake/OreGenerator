@@ -32,6 +32,9 @@ deepslate:
   enable: false
   y: 0
   chances:
+    COBBLED_DEEPSLATE:
+      enable: true
+      chance: 1.0
     DEEPSLATE_COAL_ORE:
       enable: true
       chance: 0.25
