@@ -25,7 +25,11 @@ public class BlockForm implements Listener {
     @EventHandler(priority = EventPriority.NORMAL)
     public void onBlockForm(BlockFormEvent event) {
         if (!event.getBlock().getType().equals(Material.LAVA))return;
-        if (!event.getNewState().getBlock().getType().equals(Material.LAVA))return;
-        getOreHandler().setOre(event.getNewState());
+        if (!event.getNewState().getType().equals(Material.COBBLESTONE))return;
+        if (getInstance().getConfig().getBoolean("deepslate.enable")) {
+            if (getInstance().getConfig().getInt("deepslate.y") >= event.getBlock().getLocation().getBlockY()) {
+                getOreHandler().setDeepOre(event.getNewState());
+            } else getOreHandler().setOre(event.getNewState());
+        } else getOreHandler().setOre(event.getNewState());
     }
 }

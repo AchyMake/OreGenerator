@@ -45,4 +45,31 @@ public class OreHandler {
             blockState.update(true);
         }
     }
+    private Set<Map.Entry<String, Double>> getDeepOres() {
+        var levels = new HashMap<String, Double>();
+        getConfig().getConfigurationSection("deepslate.chances").getKeys(false).forEach(level -> {
+            if (!getConfig().getBoolean("deepslate.chances." + level + ".enable"))return;
+            levels.put(level, getConfig().getDouble("deepslate.chances." + level + ".chance"));
+        });
+        var list = new ArrayList<>(levels.entrySet());
+        list.sort(Collections.reverseOrder(Map.Entry.comparingByValue()));
+        var result = new LinkedHashMap<String, Double>();
+        result.entrySet().stream()
+                .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2) -> e1, LinkedHashMap::new));
+        for (var entry : list) {
+            result.put(entry.getKey(), entry.getValue());
+        }
+        return result.entrySet();
+    }
+    public void setDeepOre(BlockState blockState) {
+        var ores = getDeepOres();
+        if (ores.isEmpty())return;
+        if (!getConfig().getStringList("worlds").contains(blockState.getWorld().getName()))return;
+        for (var ore : ores) {
+            if (!getRandomHandler().isTrue(ore.getValue()))return;
+            blockState.setType(Material.valueOf(ore.getKey()));
+            blockState.update(true);
+        }
+    }
 }

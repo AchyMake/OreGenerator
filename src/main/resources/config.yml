@@ -1,6 +1,7 @@
 notify-update: true
 worlds:
   - world
+  - world_the_end
   - test
 chances:
   COAL_ORE:
@@ -27,3 +28,31 @@ chances:
   DIAMOND_ORE:
     enable: true
     chance: 0.15
+deepslate:
+  enable: false
+  y: 0
+  chances:
+    DEEPSLATE_COAL_ORE:
+      enable: true
+      chance: 0.25
+    DEEPSLATE_COPPER_ORE:
+      enable: true
+      chance: 0.25
+    DEEPSLATE_IRON_ORE:
+      enable: true
+      chance: 0.2
+    DEEPSLATE_GOLD_ORE:
+      enable: true
+      chance: 0.19
+    DEEPSLATE_REDSTONE_ORE:
+      enable: true
+      chance: 0.18
+    DEEPSLATE_LAPIS_ORE:
+      enable: true
+      chance: 0.17
+    DEEPSLATE_EMERALD_ORE:
+      enable: true
+      chance: 0.16
+    DEEPSLATE_DIAMOND_ORE:
+      enable: true
+      chance: 0.15
