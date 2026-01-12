@@ -9,15 +9,14 @@ description: '${project.description}'
 website: '${project.url}'
 commands:
   oregenerator:
-    description: message
+    description: main command
     permission: oregenerator.command.oregenerator
-    permission-message: You do not have permissions to execute the command
     aliases:
       - oregen
 permissions:
   oregenerator.command.oregenerator:
-    description: message
+    description: main command
     default: op
   oregenerator.event.join.update:
-    description: message
+    description: check updates on join
     default: op

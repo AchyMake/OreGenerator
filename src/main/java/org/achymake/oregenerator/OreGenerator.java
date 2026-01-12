@@ -13,7 +13,7 @@ import java.io.File;
 public final class OreGenerator extends JavaPlugin {
     private static OreGenerator instance;
     private Message message;
-    private OreHandler oreHandler;
+    private MaterialHandler materialHandler;
     private RandomHandler randomHandler;
     private ScheduleHandler scheduleHandler;
     private UpdateChecker updateChecker;
@@ -23,7 +23,7 @@ public final class OreGenerator extends JavaPlugin {
     public void onEnable() {
         instance = this;
         message = new Message();
-        oreHandler = new OreHandler();
+        materialHandler = new MaterialHandler();
         randomHandler = new RandomHandler();
         scheduleHandler = new ScheduleHandler();
         updateChecker = new UpdateChecker();
@@ -37,7 +37,7 @@ public final class OreGenerator extends JavaPlugin {
     }
     @Override
     public void onDisable() {
-        getScheduleHandler().cancelAll();
+        getScheduleHandler().disable();
     }
     private void commands() {
         new OreGeneratorCommand();
@@ -67,8 +67,8 @@ public final class OreGenerator extends JavaPlugin {
     public RandomHandler getRandomHandler() {
         return randomHandler;
     }
-    public OreHandler getOreHandler() {
-        return oreHandler;
+    public MaterialHandler getMaterialHandler() {
+        return materialHandler;
     }
     public Message getMessage() {
         return message;

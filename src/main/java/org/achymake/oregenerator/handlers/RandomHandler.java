@@ -6,8 +6,11 @@ public class RandomHandler {
     private Random getRandom() {
         return new Random();
     }
+    public double nextDouble(double origin, double bound) {
+        return getRandom().nextDouble(origin, bound);
+    }
     private double getRandomDouble() {
-        return getRandom().nextDouble(0, 1);
+        return nextDouble(0.0, 1.0);
     }
     public boolean isTrue(double chance) {
         return chance >= getRandomDouble();

@@ -1,8 +1,9 @@
 package org.achymake.oregenerator.listeners;
 
 import org.achymake.oregenerator.OreGenerator;
-import org.achymake.oregenerator.handlers.OreHandler;
+import org.achymake.oregenerator.handlers.MaterialHandler;
 import org.bukkit.Material;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
@@ -13,8 +14,11 @@ public class BlockForm implements Listener {
     private OreGenerator getInstance() {
         return OreGenerator.getInstance();
     }
-    private OreHandler getOreHandler() {
-        return getInstance().getOreHandler();
+    private FileConfiguration getConfig() {
+        return getInstance().getConfig();
+    }
+    private MaterialHandler getMaterialHandler() {
+        return getInstance().getMaterialHandler();
     }
     private PluginManager getPluginManager() {
         return getInstance().getPluginManager();
@@ -26,10 +30,10 @@ public class BlockForm implements Listener {
     public void onBlockForm(BlockFormEvent event) {
         if (!event.getBlock().getType().equals(Material.LAVA))return;
         if (!event.getNewState().getType().equals(Material.COBBLESTONE))return;
-        if (getInstance().getConfig().getBoolean("deepslate.enable")) {
-            if (getInstance().getConfig().getInt("deepslate.y") >= event.getBlock().getLocation().getBlockY()) {
-                getOreHandler().setDeepOre(event.getNewState());
-            } else getOreHandler().setOre(event.getNewState());
-        } else getOreHandler().setOre(event.getNewState());
+        if (getConfig().getBoolean("deepslate.enable")) {
+            if (getConfig().getInt("deepslate.y") >= event.getBlock().getLocation().getBlockY()) {
+                getMaterialHandler().setDeepOre(event.getNewState());
+            } else getMaterialHandler().setOre(event.getNewState());
+        } else getMaterialHandler().setOre(event.getNewState());
     }
 }
